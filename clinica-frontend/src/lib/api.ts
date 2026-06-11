@@ -109,13 +109,23 @@ class ApiClient {
   }
 
   // HISTORIA CLINICA ENDPOINTS
-  async obtenerHistoriaClinica(id: number) {
-    const response = await this.api.get(`/pacientes/${id}/historia`);
+  async listarHistorias(pacienteId: number) {
+    const response = await this.api.get(`/pacientes/${pacienteId}/historias`);
     return response.data;
   }
 
-  async actualizarHistoriaClinica(id: number, datos: any) {
-    const response = await this.api.put(`/pacientes/${id}/historia`, datos);
+  async obtenerHistoria(historiaId: number) {
+    const response = await this.api.get(`/historias/${historiaId}`);
+    return response.data;
+  }
+
+  async crearHistoria(pacienteId: number, datos: any) {
+    const response = await this.api.post(`/pacientes/${pacienteId}/historias`, datos);
+    return response.data;
+  }
+
+  async actualizarHistoria(historiaId: number, datos: any) {
+    const response = await this.api.put(`/historias/${historiaId}`, datos);
     return response.data;
   }
 
@@ -130,6 +140,11 @@ class ApiClient {
       `/pacientes/${pacienteId}/odontograma/${dienteId}`,
       datos
     );
+    return response.data;
+  }
+
+  async resetOdontograma(pacienteId: number) {
+    const response = await this.api.post(`/pacientes/${pacienteId}/odontograma/reset`);
     return response.data;
   }
 

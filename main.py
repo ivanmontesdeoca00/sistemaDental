@@ -2,7 +2,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from database import engine, Base
-from routers import auth, pacientes
+from routers import auth, pacientes, historia_clinica, odontograma, citas, finanzas
 
 # Esto crea las tablas en PostgreSQL automáticamente al iniciar
 Base.metadata.create_all(bind=engine)
@@ -29,6 +29,10 @@ app.add_middleware(
 # Incluir las rutas
 app.include_router(auth.router)
 app.include_router(pacientes.router)
+app.include_router(historia_clinica.router)
+app.include_router(odontograma.router)
+app.include_router(citas.router)
+app.include_router(finanzas.router)
 
 @app.get("/")
 def root():

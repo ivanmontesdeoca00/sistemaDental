@@ -64,9 +64,14 @@ export default function HistoriaPage() {
             <h2 className="text-3xl font-semibold text-[#3e2a49]">Historia Clínica</h2>
             <p className="mt-1 text-sm text-[#6f5a75]">Registra y revisa el seguimiento médico dental del paciente.</p>
           </div>
-          <Link href={`/dashboard/pacientes/${pacienteId}`} className="rounded-full border border-[#d58ce0] px-5 py-2 text-sm font-semibold text-[#6f3f78] transition hover:bg-[#f7e5ff]">
-            Volver al paciente
-          </Link>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/dashboard" className="rounded-full border border-[#d58ce0] px-5 py-2 text-sm font-semibold text-[#6f3f78] transition hover:bg-[#f7e5ff]">
+              Volver al menú principal
+            </Link>
+            <Link href={`/dashboard/pacientes/${pacienteId}`} className="rounded-full border border-[#d58ce0] px-5 py-2 text-sm font-semibold text-[#6f3f78] transition hover:bg-[#f7e5ff]">
+              Volver al paciente
+            </Link>
+          </div>
         </div>
 
         <section className="grid gap-6 lg:grid-cols-[1fr_420px]">

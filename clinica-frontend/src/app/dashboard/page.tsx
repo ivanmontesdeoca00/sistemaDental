@@ -112,12 +112,20 @@ export default function DashboardPage() {
                   Pacientes
                 </h2>
               </div>
-              <Link
-                href="/dashboard/pacientes/nuevo"
-                className="rounded-full bg-[#f4e3ff] px-6 py-3 text-sm font-semibold text-[#5f3d7d] transition hover:bg-[#e7d2ff]"
-              >
-                Agregar Paciente
-              </Link>
+              <div className="flex flex-wrap gap-3">
+                <Link
+                  href="/dashboard/pacientes/nuevo"
+                  className="rounded-full bg-[#f4e3ff] px-6 py-3 text-sm font-semibold text-[#5f3d7d] transition hover:bg-[#e7d2ff]"
+                >
+                  Agregar Paciente
+                </Link>
+                <Link
+                  href="/dashboard/citas"
+                  className="rounded-full bg-[#d58ce0] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#c77dd4]"
+                >
+                  Ver Agenda
+                </Link>
+              </div>
             </div>
 
             {isLoading ? (
@@ -170,12 +178,30 @@ export default function DashboardPage() {
                         <td className="px-4 py-3 text-sm text-[#6f5a75]">
                           {paciente.telefono || "N/A"}
                         </td>
-                        <td className="px-4 py-3 text-right">
+                        <td className="px-4 py-3 text-right space-x-2">
                           <Link
                             href={`/dashboard/pacientes/${paciente.id}`}
-                            className="text-sm font-semibold text-[#d58ce0] hover:text-[#c76fd4]"
+                            className="inline-flex rounded-full border border-[#d58ce0] bg-[#fdf2ff] px-3 py-2 text-xs font-semibold text-[#9b4cae] transition hover:bg-[#f7e4ff]"
                           >
                             Ver
+                          </Link>
+                          <Link
+                            href={`/dashboard/pacientes/${paciente.id}/historia`}
+                            className="inline-flex rounded-full border border-[#f4e3ff] bg-[#f4e3ff] px-3 py-2 text-xs font-semibold text-[#5f3d7d] transition hover:bg-[#e7d2ff]"
+                          >
+                            Historia
+                          </Link>
+                          <Link
+                            href={`/dashboard/pacientes/${paciente.id}/odontograma`}
+                            className="inline-flex rounded-full border border-[#e8f4ff] bg-[#e8f4ff] px-3 py-2 text-xs font-semibold text-[#3e5f7d] transition hover:bg-[#d7ecff]"
+                          >
+                            Odontograma
+                          </Link>
+                          <Link
+                            href={`/dashboard/pacientes/${paciente.id}/finanzas`}
+                            className="inline-flex rounded-full border border-[#f6f0ff] bg-[#f6f0ff] px-3 py-2 text-xs font-semibold text-[#5f3d7d] transition hover:bg-[#e7e0ff]"
+                          >
+                            Finanzas
                           </Link>
                         </td>
                       </tr>

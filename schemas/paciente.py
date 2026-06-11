@@ -10,6 +10,10 @@ class PacienteBase(BaseModel):
     telefono: Optional[str] = None
     direccion: Optional[str] = None
     fecha_nacimiento: Optional[date] = None
+    edad: Optional[int] = None
+    lugar_origen: Optional[str] = None
+    contacto_emergencia: Optional[str] = None
+    patologias: Optional[str] = None
 
 class PacienteCreate(PacienteBase):
     pass
@@ -21,6 +25,10 @@ class PacienteUpdate(BaseModel):
     telefono: Optional[str] = None
     direccion: Optional[str] = None
     fecha_nacimiento: Optional[date] = None
+    edad: Optional[int] = None
+    lugar_origen: Optional[str] = None
+    contacto_emergencia: Optional[str] = None
+    patologias: Optional[str] = None
 
 class PacienteResponse(PacienteBase):
     id: int

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 export default function Home() {
   const [showModal, setShowModal] = useState(false);
@@ -22,22 +23,30 @@ export default function Home() {
           </div>
 
           <div className="grid gap-3 sm:auto-cols-fr sm:grid-flow-col">
-            <button
-              type="button"
-              onClick={() => setShowModal(true)}
+            <Link
+              href="/login"
+              className="inline-flex items-center justify-center rounded-full bg-[#d58ce0] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#c76fd4]"
+            >
+              Iniciar sesión
+            </Link>
+            <Link
+              href="/dashboard"
               className="inline-flex items-center justify-center rounded-full bg-[#f4e3ff] px-6 py-3 text-sm font-semibold text-[#5f3d7d] transition hover:bg-[#e7d2ff]"
             >
-              Ver servicios
-            </button>
-            {/* ACA PONER NUMERO DE WHATSAPP O LINK */}
-            <a
-              href="http://wa.me/+56935130026"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-full bg-[#ffe9d9] px-6 py-3 text-sm font-semibold text-[#7d4d61] transition hover:bg-[#ffe0c8]"
+              Ir al dashboard
+            </Link>
+            <Link
+              href="/dashboard/pacientes/nuevo"
+              className="inline-flex items-center justify-center rounded-full bg-[#fff1e5] px-6 py-3 text-sm font-semibold text-[#7d4d61] transition hover:bg-[#ffe0c8]"
             >
-              Contáctanos
-            </a>
+              Registrar paciente
+            </Link>
+            <Link
+              href="/dashboard/citas"
+              className="inline-flex items-center justify-center rounded-full bg-[#e8f4ff] px-6 py-3 text-sm font-semibold text-[#3e5f7d] transition hover:bg-[#d7ecff]"
+            >
+              Ver agenda
+            </Link>
           </div>
         </header>
 
@@ -87,6 +96,43 @@ export default function Home() {
                 <p className="mt-2 text-sm leading-6 text-[#6f5a75]">Colores delicados y tipografía clara para una experiencia más cómoda.</p>
               </div>
             </div>
+          </div>
+        </section>
+
+        <section className="mt-10 rounded-[2rem] border border-white/70 bg-white/90 p-8 shadow-[0_22px_80px_-48px_rgba(146,88,189,0.25)]">
+          <div className="mb-8">
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#8b5f6a]">Accesos rápidos</p>
+            <h2 className="mt-3 text-3xl font-semibold text-[#3c2a49]">Navega con un clic</h2>
+            <p className="mt-4 max-w-2xl text-sm leading-6 text-[#6f5a75]">
+              Usa estos botones para entrar al sistema, registrar pacientes y acceder rápidamente a la agenda. Desde el dashboard podrás abrir historias clínicas, odontogramas y finanzas por paciente.
+            </p>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <Link
+              href="/login"
+              className="rounded-[1.75rem] border border-[#f0d6e7] bg-[#f4e3ff] p-6 text-center text-sm font-semibold text-[#5f3d7d] transition hover:bg-[#e7d2ff]"
+            >
+              Iniciar sesión
+            </Link>
+            <Link
+              href="/dashboard/pacientes/nuevo"
+              className="rounded-[1.75rem] border border-[#fff1e5] bg-[#fff8f1] p-6 text-center text-sm font-semibold text-[#7d4d61] transition hover:bg-[#fff1dc]"
+            >
+              Registrar paciente
+            </Link>
+            <Link
+              href="/dashboard/citas"
+              className="rounded-[1.75rem] border border-[#dbeaf6] bg-[#e8f4ff] p-6 text-center text-sm font-semibold text-[#3e5f7d] transition hover:bg-[#d7ecff]"
+            >
+              Ver agenda
+            </Link>
+            <Link
+              href="/dashboard"
+              className="rounded-[1.75rem] border border-[#e7d2ff] bg-[#f7e4ff] p-6 text-center text-sm font-semibold text-[#5f3d7d] transition hover:bg-[#e7d2ff]"
+            >
+              Abrir dashboard
+            </Link>
           </div>
         </section>
 
