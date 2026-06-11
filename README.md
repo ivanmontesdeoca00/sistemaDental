@@ -1,5 +1,7 @@
 # Sistema Integral de Gestión - Clínica Dental Fuenzalida
 
+[![CI](https://github.com/ivanmontesdeoca00/sistemaDental/actions/workflows/ci.yml/badge.svg)](https://github.com/ivanmontesdeoca00/sistemaDental/actions/workflows/ci.yml)
+
 ## 🦷 Descripción
 
 Sistema full-stack diseñado específicamente para la gestión integral de clínicas dentales. Incluye:
@@ -253,5 +255,10 @@ Proyecto privado para Clínica Dental Fuenzalida.
 
 ---
 
-**Última actualización**: 10 de Junio de 2026  
-**Versión**: 1.0 (FASE 1 completada)
+**Última actualización**: 11 de Junio de 2026  
+**Versión**: 1.1 (FASE 1 completada)
+
+**Changelog (reciente)**
+- 2026-06-11: Reemplazada la encriptación con `bcrypt` por PBKDF2-HMAC-SHA256 en `security.py` (para evitar problemas locales con bcrypt).  
+- 2026-06-11: Agregado `test_api.py` para pruebas rápidas e2e (registro/login, pacientes, historias).  
+- 2026-06-11: Cambios commiteados y pusheados a `origin` en la rama `main`.
