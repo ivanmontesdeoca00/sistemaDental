@@ -1,4 +1,7 @@
 ﻿import os
+import base64
+import hashlib
+import hmac
 from datetime import datetime, timedelta
 from typing import Optional
 
@@ -6,7 +9,6 @@ from dotenv import load_dotenv
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt
-from passlib.context import CryptContext
 from sqlalchemy.orm import Session
 
 from database import get_db
@@ -21,16 +23,24 @@ ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "30")
 if not SECRET_KEY:
     raise ValueError("SECRET_KEY environment variable is required")
 
-# Configuración de Passlib para encriptar contraseñas (bcrypt)
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/login")
 
+
 def verify_password(plain_password: str, hashed_password: str) -> bool:
-    return pwd_context.verify(plain_password, hashed_password)
+    try:
+        decoded = base64.b64decode(hashed_password.encode())
+        salt = decoded[:16]
+        dk = decoded[16:]
+        new_dk = hashlib.pbkdf2_hmac("sha256", plain_password.encode(), salt, 100000)
+        return hmac.compare_digest(new_dk, dk)
+    except Exception:
+        return False
 
 
 def get_password_hash(password: str) -> str:
-    return pwd_context.hash(password)
+    salt = os.urandom(16)
+    dk = hashlib.pbkdf2_hmac("sha256", password.encode(), salt, 100000)
+    return base64.b64encode(salt + dk).decode()
 
 
 def create_access_token(data: dict, expires_delta: Optional[timedelta] = None) -> str:
