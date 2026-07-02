@@ -8,6 +8,7 @@ from security import get_current_user
 
 router = APIRouter(prefix="/pacientes", tags=["Pacientes"])
 
+@router.post("", response_model=PacienteResponse, status_code=status.HTTP_201_CREATED)
 @router.post("/", response_model=PacienteResponse, status_code=status.HTTP_201_CREATED)
 def crear_paciente(
     paciente: PacienteCreate,
@@ -24,6 +25,7 @@ def crear_paciente(
     db.refresh(nuevo_paciente)
     return nuevo_paciente
 
+@router.get("", response_model=list[PacienteResponse])
 @router.get("/", response_model=list[PacienteResponse])
 def listar_pacientes(
     db: Session = Depends(get_db),

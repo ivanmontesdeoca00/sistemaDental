@@ -89,6 +89,10 @@ class ApiClient {
     telefono?: string;
     fecha_nacimiento?: string;
     direccion?: string;
+    edad?: number | string;
+    lugar_origen?: string;
+    contacto_emergencia?: string;
+    patologias?: string;
   }) {
     const response = await this.api.post("/pacientes", datos);
     return response.data;
@@ -121,6 +125,16 @@ class ApiClient {
 
   async crearHistoria(pacienteId: number, datos: any) {
     const response = await this.api.post(`/pacientes/${pacienteId}/historias`, datos);
+    return response.data;
+  }
+
+  async listarConsentimientos(pacienteId: number) {
+    const response = await this.api.get(`/pacientes/${pacienteId}/consentimientos`);
+    return response.data;
+  }
+
+  async crearConsentimiento(pacienteId: number, datos: any) {
+    const response = await this.api.post(`/pacientes/${pacienteId}/consentimientos`, datos);
     return response.data;
   }
 
@@ -216,14 +230,6 @@ class ApiClient {
   }
 
   // CONSENTIMIENTOS ENDPOINTS
-  async crearConsentimiento(pacienteId: number, tipoTratamiento: string) {
-    const response = await this.api.post(
-      `/pacientes/${pacienteId}/consentimientos`,
-      { tipo_tratamiento: tipoTratamiento }
-    );
-    return response.data;
-  }
-
   async obtenerConsentimientos(pacienteId: number) {
     const response = await this.api.get(
       `/pacientes/${pacienteId}/consentimientos`
@@ -237,6 +243,10 @@ class ApiClient {
       { firma_digital: firma }
     );
     return response.data;
+  }
+
+  async eliminarArchivo(archivoId: number) {
+    await this.api.delete(`/archivos/${archivoId}`);
   }
 
   // FINANZAS ENDPOINTS

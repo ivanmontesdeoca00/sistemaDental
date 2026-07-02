@@ -51,7 +51,13 @@ export default function DashboardPage() {
               </p>
               <h1 className="text-2xl font-semibold text-[#3e2a49]">Dashboard</h1>
             </div>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
+              <Link
+                href="/"
+                className="rounded-full border border-[#d58ce0] px-4 py-2 text-sm font-semibold text-[#6f3f78] transition hover:bg-[#f7e5ff]"
+              >
+                Menú principal
+              </Link>
               <div className="text-right">
                 <p className="text-sm font-semibold text-[#3e2a49]">
                   {usuario?.email}

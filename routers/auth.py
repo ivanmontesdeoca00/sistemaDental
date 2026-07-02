@@ -9,7 +9,7 @@ from security import get_password_hash, verify_password, create_access_token
 
 router = APIRouter(prefix="/auth", tags=["Autenticación"])
 
-@router.post("/registro", response_model=UsuarioResponse)
+@router.post("/registro", response_model=UsuarioResponse, status_code=status.HTTP_201_CREATED)
 def registrar_usuario(usuario: UsuarioCreate, db: Session = Depends(get_db)):
     # Verificar si el email ya existe
     db_user = db.query(Usuario).filter(Usuario.email == usuario.email).first()

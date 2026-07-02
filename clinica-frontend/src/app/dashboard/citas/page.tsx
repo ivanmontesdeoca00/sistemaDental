@@ -69,9 +69,14 @@ export default function CitasPage() {
             <h2 className="text-3xl font-semibold text-[#3e2a49]">Agenda de Citas</h2>
             <p className="mt-1 text-sm text-[#6f5a75]">Administra la agenda general de la clínica y programa nuevas consultas.</p>
           </div>
-          <Link href="/dashboard" className="rounded-full border border-[#d58ce0] px-5 py-2 text-sm font-semibold text-[#6f3f78] transition hover:bg-[#f7e5ff]">
-            Volver al menú principal
-          </Link>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/dashboard" className="rounded-full border border-[#d58ce0] px-5 py-2 text-sm font-semibold text-[#6f3f78] transition hover:bg-[#f7e5ff]">
+              Volver al dashboard
+            </Link>
+            <Link href="/" className="rounded-full bg-[#f4e3ff] px-5 py-2 text-sm font-semibold text-[#5f3d7d] transition hover:bg-[#e7d2ff]">
+              Menú principal
+            </Link>
+          </div>
         </div>
 
         <div className="grid gap-6 lg:grid-cols-[1fr_360px]">
